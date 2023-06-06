@@ -1,0 +1,108 @@
+@use 'sass:list';
+
+
+
+.widgetLg-container {
+    background-color: #0B061D;
+    border-radius: 10px;
+    padding: .6rem;
+
+
+    .widgetLg_title {
+        padding: .8rem .6rem .4rem;
+    }
+
+    
+    .widgetLg_table {
+        display: flex;
+        flex-direction: column;
+        padding: .95rem;
+
+
+
+        /*--------------Table-tr--------------*/
+        #{selector-nest('tbody', 'tr')} {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            justify-items: center;
+            align-items: center;
+            border-bottom: 1px solid rgba(#646464, .4);
+            margin-bottom: .2rem;
+        }
+
+
+
+        /*--------------Table-Title--------------*/
+        #{selector-nest('tbody', 'tr.table-title')} {
+            padding: .7rem 0;
+            th:first-of-type {
+                justify-self: start;
+            }
+            @media (min-width: 43em) {
+                padding: .7rem;
+            }
+        }
+
+
+
+        /*--------------Table-Rows--------------*/
+        #{selector-nest('tbody', '.table-row')} {
+            height: 65px;
+            
+            td {
+                font-size: .8rem;
+            }
+
+            $fontColors:(#85c419, #4361ee, #85c419, #ef233c, #85c419);
+            @for $i from 1 through length($fontColors)  {
+                &:nth-of-type(#{$i + 1}) {
+                    td:last-of-type {
+                        color: nth($fontColors, $i);
+                    }
+                }
+            }
+
+            td:nth-of-type(1) {
+                justify-self: start;
+                display: flex;
+                align-items: center;
+                gap: .7rem;
+                font-size: .77rem;
+                font-weight: 600;
+                width: 73px;
+                img {
+                    min-width: 50px;
+                    min-height: 50px;
+                    width: 50px;
+                    height: 50px;
+                    object-fit: cover;
+                    border-radius: 100px;
+                    display: none;
+                }
+            }
+
+
+            /*--------------Media-Queries--------------*/
+            @media (min-width: 35em) {
+                td:nth-of-type(1) {
+                    padding-left: .5rem;
+                }
+            }
+
+            @media (min-width: 48em) {
+                gap: 0;
+
+                td {
+                    font-size: .92rem;
+                }
+                td:nth-of-type(1) {
+                    font-size: 1rem;
+                    width: auto;
+                    img {
+                        display: block;
+                    }
+                }
+            }
+        }
+    }
+}

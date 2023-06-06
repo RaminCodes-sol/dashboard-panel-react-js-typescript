@@ -1,0 +1,24 @@
+
+
+
+
+
+.home-container {
+    width: 100%;
+    color: white;
+    
+    .widgets {
+        width: 100%;
+        display: grid;
+        padding: 1rem;
+        gap: .77rem;
+        grid-template-columns: 1fr;
+        margin-top: .8rem;
+    }
+
+    @media (min-width: 66em) {
+        .widgets {
+            grid-template-columns: .6fr 1fr;
+        }
+    }
+}

@@ -1,0 +1,259 @@
+
+
+.userList-wrapper {
+    width: 100%;
+    display: grid;
+    justify-items: center;
+    padding: 1.5rem .2rem;
+
+    @media (min-width: 40em) {
+        padding: 1.5rem 1rem;
+    }
+
+    > h5 {
+        font-size: 1.5rem;
+        padding: 6rem 0;
+        color: #fff;
+    }
+
+    table {
+        width: 100%;
+        max-width: 1100px;
+        display: flex;
+        flex-direction: column;
+        border: 1px solid rgba(#646464, .4);
+        background-color: #09031D;
+        padding: 0 .5rem;
+
+        @media (min-width: 54em) {
+            padding: 0 0;
+        }
+
+        /*--------------Table-Tr--------------*/
+        #{selector-nest('tbody', 'tr')} {
+            display: grid;
+            grid-template-columns: auto repeat(2, 1fr);
+            grid-template-columns: auto 2fr 1fr;
+            justify-items: center;
+            align-items: center;
+            --column-visible: none;
+            --column-visible-trnx: none;
+
+            &.table-title {
+                th[data-table-state='column'] {
+                    display: var(--column-visible);
+                }
+
+                th[data-table-state='column-transaction'] {
+                    display: var(--column-visible-trnx);
+                }
+            }
+            
+            &.table-row {
+                td[data-table-state='column'] {
+                    display: var(--column-visible);
+                }
+                td[data-table-state='column-transaction'] {
+                    display: var(--column-visible-trnx);
+                }
+            }
+
+            @media (min-width: 35em) {
+                grid-template-columns: .5fr repeat(3, 1fr);
+                --column-visible-trnx: flex;
+            }
+
+            @media (min-width: 54em) {
+                grid-template-columns: auto 2fr repeat(4, 1fr);
+                --column-visible: flex;
+            }
+
+            @media (min-width: 67em) {
+                grid-template-columns: .5fr repeat(5, 1fr); 
+            }
+        }
+
+
+        /*--------------Table-Title--------------*/
+        #{selector-nest('tbody', 'tr.table-title')} {
+            padding: .7rem .3rem;
+            border-bottom: 1px solid rgba(#646464, .4);
+            
+            th {
+                display: flex;
+                align-items: center;
+                gap: .5rem;
+                color: #fff;
+
+                &:nth-of-type(1) {
+                    padding: 0 .5rem 0 .5rem;
+                    button {
+                        padding: .5rem .6rem;
+                    }
+                    @media (min-width: 43em) {
+                        padding: 0 .8rem 0 1rem;
+                    }
+                }
+
+                > input {
+                    width: 20px;
+                    height: 20px;
+                    cursor: pointer;
+                }
+
+                > button {
+                    padding: .5rem .8rem;
+                    font-size: .9rem;
+                    font-weight: 700;
+                    background-color: transparent;
+                    transition: all .1s linear;
+                    color: #fff;
+                    &:hover {
+                        color: #616161;
+                    }
+                }
+
+                > span {
+                    font-size: .93rem;
+                    font-weight: 700;
+                }
+                
+            }
+        }
+
+
+        /*--------------Table-Row--------------*/
+        #{selector-nest('tbody', 'tr.table-row')} {
+            padding: .6rem 0;
+            border-bottom: .5px solid rgba(#646464, .4);;
+            color: #fff;
+            gap: 1rem;
+
+            .user-checkbox {
+                display: flex;
+                align-items: center;
+                gap: .5rem;
+                padding: 0 .5rem 0 .5rem;
+                padding: 0 0 0 .5rem;
+
+                input {
+                    width: 17px;
+                    height: 17px;
+                    cursor: pointer;
+                }
+                span {
+                    color: #646363;
+                    font-size: .95rem;
+                }
+            }
+
+            .user-img {
+                display: flex;
+                align-items: center;
+                justify-self: start;
+                gap: .7rem;
+                img {
+                    width: 47px;
+                    min-width: 47px;
+                    height: 47px;
+                    object-fit: cover;
+                    border-radius: 100px;
+
+                }
+                span {
+                    font-size: .82rem;
+                    // font-weight: 600;;
+                }
+            }
+
+            .user-email {
+                span {
+                    font-size: .9rem;
+                    color: silver;
+                }
+            }
+
+            .user-status {
+                display: flex;
+                align-items: center;
+                gap: .5rem;
+                span:first-of-type{ 
+                    width: 7px;
+                    height: 7px;
+                    background-color: #000;
+                    border-radius: 100px;
+                    margin-top: 2px;
+                }
+                span {
+                    font-size: .95rem;
+                }
+            }
+
+            .user-transaction {
+                span {
+                    font-size: .85rem;
+                }
+            }
+
+            .user-action {
+                display: flex;
+                gap: .5rem;
+                button {
+                    font-size: 1rem;
+                    padding: .4rem .7rem;
+                    background-color: transparent;
+                    &:nth-of-type(1) {
+                        background-color: #4BBE7E;
+                        color: #fff;
+                        border-radius: 5px;
+                        padding: .5rem .88rem;
+                        font-size: .95rem;
+                    }
+                    &:nth-of-type(2) {
+                        font-size: 1.5rem;
+                        color: #fb3d3d;
+                    }
+                }
+            }
+
+            @media (min-width: 43em) {
+                padding: .6rem .3rem;
+
+                .user-checkbox {
+                    padding: 0 .8rem 0 1rem;
+                }
+
+                .user-img {
+                    img {
+                        width: 50px;
+                        min-width: 50px;
+                        height: 50px;
+                    }
+                    span {
+                        font-size: .92rem;
+                    }
+                }
+
+                .user-transaction {
+                    span {
+                        font-size: .92rem;
+                    }
+                }
+
+                .user-action {
+                    gap: 1.3rem;
+                    button {
+                        padding: .5rem .7rem;
+                        // background: red;
+                        &:nth-of-type(1) {
+                            padding: .5rem 1;
+                        }
+                    }
+                }
+            }
+        }
+
+        
+    }
+
+}
